@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.7" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JDialog" name="jd_crearE">
 
@@ -44,14 +44,14 @@
                               <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jt_paisE_crearE" max="32767" attributes="0"/>
-                                  <Component id="jTextField1" pref="168" max="32767" attributes="0"/>
-                                  <Component id="jTextField2" max="32767" attributes="0"/>
-                                  <Component id="jTextField3" max="32767" attributes="0"/>
+                                  <Component id="jt_nombreE_crearE" pref="168" max="32767" attributes="0"/>
+                                  <Component id="jt_ciudad_crearE" max="32767" attributes="0"/>
+                                  <Component id="jt_estadio_crearE" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Component id="bt_agregarE_crearE" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="173" max="32767" attributes="0"/>
@@ -71,20 +71,20 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jt_nombreE_crearE" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jt_ciudad_crearE" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jt_estadio_crearE" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="76" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="bt_agregarE_crearE" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -148,19 +148,22 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jt_paisE_crearE">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="jt_nombreE_crearE">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="jt_ciudad_crearE">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="jt_estadio_crearE">
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="bt_agregarE_crearE">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Trebuchet MS" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_agregarE_crearEMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -457,7 +460,12 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTree" name="jTree1">
+                <Component class="javax.swing.JTree" name="jtr_equipos_trans">
+                  <Properties>
+                    <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
+                      <TreeModel code="Equipos"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

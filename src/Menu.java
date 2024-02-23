@@ -1,5 +1,9 @@
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -21,10 +25,10 @@ public class Menu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jt_paisE_crearE = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jt_nombreE_crearE = new javax.swing.JTextField();
+        jt_ciudad_crearE = new javax.swing.JTextField();
+        jt_estadio_crearE = new javax.swing.JTextField();
+        bt_agregarE_crearE = new javax.swing.JButton();
         jd_crearJ = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -43,7 +47,7 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_jugadores_trans = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jtr_equipos_trans = new javax.swing.JTree();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         bt_crearE_menu = new javax.swing.JButton();
@@ -79,8 +83,13 @@ public class Menu extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estadio");
 
-        jButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jButton1.setText("Agregar");
+        bt_agregarE_crearE.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        bt_agregarE_crearE.setText("Agregar");
+        bt_agregarE_crearE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarE_crearEMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -101,12 +110,12 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(158, 158, 158)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jt_paisE_crearE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)))
+                            .addComponent(jt_nombreE_crearE, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(jt_ciudad_crearE)
+                            .addComponent(jt_estadio_crearE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(289, 289, 289)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_agregarE_crearE, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(173, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -121,17 +130,17 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_nombreE_crearE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_ciudad_crearE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_estadio_crearE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_agregarE_crearE, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
         );
 
@@ -250,7 +259,9 @@ public class Menu extends javax.swing.JFrame {
         jl_jugadores_trans.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(jl_jugadores_trans);
 
-        jScrollPane2.setViewportView(jTree1);
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
+        jtr_equipos_trans.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jtr_equipos_trans);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -433,6 +444,46 @@ public class Menu extends javax.swing.JFrame {
         cb_posicion_crearJ.setSelectedItem(0);
     }//GEN-LAST:event_bt_agregar_crearJMouseClicked
 
+    private void bt_agregarE_crearEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarE_crearEMouseClicked
+        DefaultTreeModel model = (DefaultTreeModel) jtr_equipos_trans.getModel();
+        
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
+        
+        DefaultMutableTreeNode equipo = new DefaultMutableTreeNode(new Equipo(jt_nombreE_crearE.getText(),jt_paisE_crearE.getText(),jt_ciudad_crearE.getText(),jt_estadio_crearE.getText()));
+        
+        String pais = jt_paisE_crearE.getText();
+        
+        int verif = 0;
+        
+        for (int cont = 0; cont < root.getChildCount(); cont++) {
+            if(root.getChildAt(cont).toString().equals(pais)){
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode(new Equipo(jt_nombreE_crearE.getText(),jt_paisE_crearE.getText(),jt_ciudad_crearE.getText(),jt_estadio_crearE.getText()));
+                ((DefaultMutableTreeNode) root.getChildAt(cont)).add(n);
+                verif = 1;
+            }
+        }
+        System.out.println(verif);
+        if(verif == 0){
+            DefaultMutableTreeNode n
+                        = new DefaultMutableTreeNode(pais);
+                DefaultMutableTreeNode p
+                        = new DefaultMutableTreeNode(
+                                new Equipo(jt_nombreE_crearE.getText(),jt_paisE_crearE.getText(),jt_ciudad_crearE.getText(),jt_estadio_crearE.getText())
+                        );
+                n.add(p);
+                root.add(n);
+        }        
+        
+        model.reload();  
+        
+        jt_nombreE_crearE.setText("");
+        jt_ciudad_crearE.setText("");
+        jt_paisE_crearE.setText("");
+        jt_estadio_crearE.setText("");
+        
+        jtr_equipos_trans.setModel(model);
+    }//GEN-LAST:event_bt_agregarE_crearEMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -488,13 +539,24 @@ public class Menu extends javax.swing.JFrame {
         jd_trans.setVisible(true);     
     }
     
+    public boolean cadena(String palabra){
+        Pattern pt = Pattern.compile("^.*\\d.*$");
+        Matcher m = pt.matcher(palabra);
+        if(m.find()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_agregarE_crearE;
     private javax.swing.JButton bt_agregar_crearJ;
     private javax.swing.JButton bt_crearE_menu;
     private javax.swing.JButton bt_crearJ_menu;
     private javax.swing.JButton bt_trans_menu;
     private javax.swing.JComboBox<String> cb_posicion_crearJ;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -516,18 +578,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTree jTree1;
     private javax.swing.JDialog jd_crearE;
     private javax.swing.JDialog jd_crearJ;
     private javax.swing.JDialog jd_trans;
     private javax.swing.JList<String> jl_jugadores_trans;
     private javax.swing.JMenu jm_opciones_menu;
     private javax.swing.JSpinner js_edad_crearJ;
+    private javax.swing.JTextField jt_ciudad_crearE;
+    private javax.swing.JTextField jt_estadio_crearE;
+    private javax.swing.JTextField jt_nombreE_crearE;
     private javax.swing.JTextField jt_paisE_crearE;
+    private javax.swing.JTree jtr_equipos_trans;
     private javax.swing.JMenuItem mi_crearE_menu;
     private javax.swing.JMenuItem mi_crearJ_menu;
     private javax.swing.JMenuItem mi_trans_menu;

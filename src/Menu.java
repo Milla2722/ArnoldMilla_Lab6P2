@@ -512,9 +512,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jl_jugadores_transMouseClicked
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        String nombre = JOptionPane.showInputDialog(jd_trans, "Ingresar nuevo nombre");
-        
-        String edad = JOptionPane.showInputDialog(jd_trans, "Ingresar nueva edad");
+        if(jl_jugadores_trans.getSelectedIndex() >= 0){
+            
+        } 
     }//GEN-LAST:event_ModificarActionPerformed
 
     /**

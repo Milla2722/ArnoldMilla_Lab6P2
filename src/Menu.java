@@ -2,6 +2,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -48,6 +49,9 @@ public class Menu extends javax.swing.JFrame {
         jl_jugadores_trans = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtr_equipos_trans = new javax.swing.JTree();
+        pp_jugadores_trans = new javax.swing.JPopupMenu();
+        Modificar = new javax.swing.JMenuItem();
+        Remover = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         bt_crearE_menu = new javax.swing.JButton();
@@ -257,6 +261,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel13.setText("Jugadores");
 
         jl_jugadores_trans.setModel(new DefaultListModel());
+        jl_jugadores_trans.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_jugadores_transMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jl_jugadores_trans);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
@@ -311,6 +320,17 @@ public class Menu extends javax.swing.JFrame {
             jd_transLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        Modificar.setText("jMenuItem1");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
+        pp_jugadores_trans.add(Modificar);
+
+        Remover.setText("jMenuItem2");
+        pp_jugadores_trans.add(Remover);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 255));
@@ -484,6 +504,19 @@ public class Menu extends javax.swing.JFrame {
         jtr_equipos_trans.setModel(model);
     }//GEN-LAST:event_bt_agregarE_crearEMouseClicked
 
+    private void jl_jugadores_transMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jugadores_transMouseClicked
+        if(evt.getButton() == 3){
+            pp_jugadores_trans.show(jl_jugadores_trans, evt.getX(), evt.getY());
+            jugador = jl_jugadores_trans.getSelectedIndex();
+        }
+    }//GEN-LAST:event_jl_jugadores_transMouseClicked
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        String nombre = JOptionPane.showInputDialog(jd_trans, "Ingresar nuevo nombre");
+        
+        String edad = JOptionPane.showInputDialog(jd_trans, "Ingresar nueva edad");
+    }//GEN-LAST:event_ModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -550,7 +583,10 @@ public class Menu extends javax.swing.JFrame {
         }
     }
     
+    int jugador = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Modificar;
+    private javax.swing.JMenuItem Remover;
     private javax.swing.JButton bt_agregarE_crearE;
     private javax.swing.JButton bt_agregar_crearJ;
     private javax.swing.JButton bt_crearE_menu;
@@ -593,6 +629,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mi_crearE_menu;
     private javax.swing.JMenuItem mi_crearJ_menu;
     private javax.swing.JMenuItem mi_trans_menu;
+    private javax.swing.JPopupMenu pp_jugadores_trans;
     private javax.swing.JTextField tf_nombre_crearJ;
     // End of variables declaration//GEN-END:variables
 }

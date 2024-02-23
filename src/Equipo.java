@@ -1,5 +1,9 @@
+
+import java.util.ArrayList;
+
 public class Equipo {
     private String nombre, pais,ciudad, estadio;
+    private ArrayList <Jugadores> jugadores = new ArrayList();
 
     public Equipo() {
     }

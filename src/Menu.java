@@ -594,7 +594,10 @@ public class Menu extends javax.swing.JFrame {
             
             DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Jugadores(edad, Nombre, posicion));
             
-            nodo.add(p);
+            DefaultMutableTreeNode posicionN = new DefaultMutableTreeNode(posicion);
+            
+            posicionN.add(p);
+            nodo.add(posicionN);
             pais.add(nodo);
             root.add(pais);
             modelA.reload();

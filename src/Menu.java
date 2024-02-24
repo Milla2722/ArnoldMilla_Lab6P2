@@ -5,6 +5,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -49,6 +50,7 @@ public class Menu extends javax.swing.JFrame {
         jl_jugadores_trans = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtr_equipos_trans = new javax.swing.JTree();
+        jButton1 = new javax.swing.JButton();
         pp_jugadores_trans = new javax.swing.JPopupMenu();
         Modificar = new javax.swing.JMenuItem();
         Remover = new javax.swing.JMenuItem();
@@ -248,6 +250,8 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_trans.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel4.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
@@ -279,6 +283,13 @@ public class Menu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtr_equipos_trans);
 
+        jButton1.setText("Transferir ->");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -288,18 +299,19 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12)
-                .addGap(152, 152, 152))
+                .addGap(129, 129, 129))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(183, 183, 183)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(218, 218, 218)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(278, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,26 +319,23 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jLabel11)
                 .addGap(56, 56, 56)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel13)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jButton1)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jd_transLayout = new javax.swing.GroupLayout(jd_trans.getContentPane());
-        jd_trans.getContentPane().setLayout(jd_transLayout);
-        jd_transLayout.setHorizontalGroup(
-            jd_transLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jd_transLayout.setVerticalGroup(
-            jd_transLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jd_trans.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Modificar.setText("Modificar");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -474,7 +483,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_trans_menuMouseClicked
 
     private void bt_agregar_crearJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregar_crearJMouseClicked
-        DefaultListModel model = new DefaultListModel();
+        DefaultListModel model = (DefaultListModel) jl_jugadores_trans.getModel();
         model.addElement(new Jugadores((Integer) js_edad_crearJ.getValue(),tf_nombre_crearJ.getText(), (String) cb_posicion_crearJ.getSelectedItem()));
         
         jl_jugadores_trans.setModel(model);
@@ -502,14 +511,9 @@ public class Menu extends javax.swing.JFrame {
                 verif = 1;
             }
         }
-        System.out.println(verif);
         if(verif == 0){
-            DefaultMutableTreeNode n
-                        = new DefaultMutableTreeNode(pais);
-                DefaultMutableTreeNode p
-                        = new DefaultMutableTreeNode(
-                                new Equipo(jt_nombreE_crearE.getText(),jt_paisE_crearE.getText(),jt_ciudad_crearE.getText(),jt_estadio_crearE.getText())
-                        );
+            DefaultMutableTreeNode n = new DefaultMutableTreeNode(pais);
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Equipo(jt_nombreE_crearE.getText(),jt_paisE_crearE.getText(),jt_ciudad_crearE.getText(),jt_estadio_crearE.getText()));
                 n.add(p);
                 root.add(n);
         }        
@@ -567,6 +571,37 @@ public class Menu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jtr_equipos_transMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        if(jl_jugadores_trans.getSelectedIndex() >= 0){
+            int edad;
+            String Nombre, posicion;
+            DefaultTreeModel modelA = (DefaultTreeModel) jtr_equipos_trans.getModel();
+            
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode) modelA.getRoot();
+            
+            DefaultMutableTreeNode pais = (DefaultMutableTreeNode) modelA.getChild(root, 0);
+            
+            DefaultListModel modelL = (DefaultListModel) jl_jugadores_trans.getModel();
+            
+            Nombre = ( (Jugadores) modelL.get(jl_jugadores_trans.getSelectedIndex())).getNombre();
+            posicion = ( (Jugadores) modelL.get(jl_jugadores_trans.getSelectedIndex())).getPosicion();
+            
+            edad = ((Jugadores) modelL.get(jl_jugadores_trans.getSelectedIndex())).getEdad();
+            
+            Object nodoD = jtr_equipos_trans.getSelectionPath().getLastPathComponent();
+            nodo = (DefaultMutableTreeNode) nodoD;
+            
+            DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Jugadores(edad, Nombre, posicion));
+            
+            nodo.add(p);
+            pais.add(nodo);
+            root.add(pais);
+            modelA.reload();
+            
+            jtr_equipos_trans.setModel(modelA);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     
     public static void main(String args[]) {
@@ -642,6 +677,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton bt_crearJ_menu;
     private javax.swing.JButton bt_trans_menu;
     private javax.swing.JComboBox<String> cb_posicion_crearJ;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

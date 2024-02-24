@@ -52,6 +52,8 @@ public class Menu extends javax.swing.JFrame {
         pp_jugadores_trans = new javax.swing.JPopupMenu();
         Modificar = new javax.swing.JMenuItem();
         Remover = new javax.swing.JMenuItem();
+        pp_equipos_trans = new javax.swing.JPopupMenu();
+        mi_eliminar_equipos = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         bt_crearE_menu = new javax.swing.JButton();
@@ -270,6 +272,11 @@ public class Menu extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
         jtr_equipos_trans.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jtr_equipos_trans.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtr_equipos_transMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtr_equipos_trans);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -321,7 +328,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        Modificar.setText("jMenuItem1");
+        Modificar.setText("Modificar");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarActionPerformed(evt);
@@ -329,8 +336,21 @@ public class Menu extends javax.swing.JFrame {
         });
         pp_jugadores_trans.add(Modificar);
 
-        Remover.setText("jMenuItem2");
+        Remover.setText("Remover");
+        Remover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoverActionPerformed(evt);
+            }
+        });
         pp_jugadores_trans.add(Remover);
+
+        mi_eliminar_equipos.setText("Eliminar");
+        mi_eliminar_equipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_eliminar_equiposActionPerformed(evt);
+            }
+        });
+        pp_equipos_trans.add(mi_eliminar_equipos);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 255));
@@ -507,19 +527,48 @@ public class Menu extends javax.swing.JFrame {
     private void jl_jugadores_transMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jugadores_transMouseClicked
         if(evt.getButton() == 3){
             pp_jugadores_trans.show(jl_jugadores_trans, evt.getX(), evt.getY());
-            jugador = jl_jugadores_trans.getSelectedIndex();
         }
     }//GEN-LAST:event_jl_jugadores_transMouseClicked
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         if(jl_jugadores_trans.getSelectedIndex() >= 0){
-            
+            DefaultListModel modeloN = (DefaultListModel) jl_jugadores_trans.getModel();
+            ((Jugadores) modeloN.get(jl_jugadores_trans.getSelectedIndex())).setNombre(JOptionPane.showInputDialog(jd_trans, "Ingrese el nuevo nombre"));
+            ((Jugadores) modeloN.get(jl_jugadores_trans.getSelectedIndex())).setEdad(Integer.parseInt(JOptionPane.showInputDialog(jd_trans, "Ingrese la nueva edad")));
+            jl_jugadores_trans.setModel(modeloN);
         } 
     }//GEN-LAST:event_ModificarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoverActionPerformed
+        if(jl_jugadores_trans.getSelectedIndex() >= 0){
+            DefaultListModel modeloN = (DefaultListModel) jl_jugadores_trans.getModel();
+            modeloN.remove(jl_jugadores_trans.getSelectedIndex());
+            jl_jugadores_trans.setModel(modeloN);
+        } 
+    }//GEN-LAST:event_RemoverActionPerformed
+
+    private void mi_eliminar_equiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_eliminar_equiposActionPerformed
+        JOptionPane.showMessageDialog(jd_trans, "Eliminando este nodo");
+        DefaultTreeModel model = (DefaultTreeModel) jtr_equipos_trans.getModel();
+            model.removeNodeFromParent(nodo);
+            model.reload();
+    }//GEN-LAST:event_mi_eliminar_equiposActionPerformed
+
+    private void jtr_equipos_transMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtr_equipos_transMouseClicked
+        if(evt.getButton() == 3){
+            int row = jtr_equipos_trans.getClosestRowForLocation(evt.getX(), evt.getY());
+            jtr_equipos_trans.setSelectionRow(row);
+            ///Estas dos lineas de arriba nos las enseño el inge para poder hacer que se seleccione el primer nodo
+            //sin tener que presionar un nodo
+            Object nodeD = jtr_equipos_trans.getSelectionPath().getLastPathComponent();
+            nodo = (DefaultMutableTreeNode) nodeD;
+            if (nodo.getUserObject() instanceof Equipo) {
+                pp_equipos_trans.show(evt.getComponent(),evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jtr_equipos_transMouseClicked
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -583,7 +632,7 @@ public class Menu extends javax.swing.JFrame {
         }
     }
     
-    int jugador = 0;
+    DefaultMutableTreeNode nodo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Modificar;
     private javax.swing.JMenuItem Remover;
@@ -628,7 +677,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTree jtr_equipos_trans;
     private javax.swing.JMenuItem mi_crearE_menu;
     private javax.swing.JMenuItem mi_crearJ_menu;
+    private javax.swing.JMenuItem mi_eliminar_equipos;
     private javax.swing.JMenuItem mi_trans_menu;
+    private javax.swing.JPopupMenu pp_equipos_trans;
     private javax.swing.JPopupMenu pp_jugadores_trans;
     private javax.swing.JTextField tf_nombre_crearJ;
     // End of variables declaration//GEN-END:variables
